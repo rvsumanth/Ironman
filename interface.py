@@ -1,14 +1,17 @@
-from Ironman import ironman_op
+from ironman_operations import *
 from Access import *
+from utils import *
 
 
 auth = Authentication()
 int_acc = suite_access_protection()
+suite_op = ironman_op()
+
 print('\nHello Welcome to VS Technology')
 while True:
     print()
     #section for creating password
-    first_acc = int(input("If You are New User Choose 1 to Create Password\nIf you Forgot Your Password Choose 2 to Update\nIf you are already a user? choose any number to Login\nEnter Your Option:  "))
+    first_acc = int(input("1. Create Password\n2. Update Password\nChoose any number to Login\nEnter Your Option:  "))
     if first_acc == 1:
         cr_pass = int_acc.create_pass()
         if cr_pass != True:
@@ -26,10 +29,55 @@ while True:
             #interface login
             login_int = auth.interface_access()
             if login_int:
-                print("Welcome Sir select Operations ")
-                break
+                # Selecting Opearations
+                print("\nWelcome Sir select Operations ")
+                su_fly = 0
+                while True:
+                    sel_op = int(input('\nOperations: \n1. Fly \n2. Land \n3. exit \nEnter here: '))
+                    if sel_op == 1:
+                        if su_fly ==1:
+                            print("\nSuite is already Flying")
+                            continue
+                        else:
+                            fly  = suite_op.start_ign()
+                            if fly: 
+                                su_fly = 1
+                                
+                        
+                    elif sel_op == 2:
+                        if su_fly == 0:
+                            print("\nSuite is already in Land")
+                            continue
+                        else:
+                            lnd = suite_op.stop_ign()
+                            if lnd:
+                                su_fly = 0
+
+                    else:
+                        if su_fly == 1:
+                            lnd_frc = 0
+                            while lnd_frc == 0:
+                                log_force = land_forceful()
+                                if log_force:
+                                    lnd_frc = 1
+                                    break
+                                else: 
+                                    continue
+
+                            if lnd_frc == 1:
+                                break
+
+                        elif su_fly == 0:        
+                            print("Logged out")
+                            break
+
+                        else:
+                            print("Log out unsuccessful")
+                            continue
+
+                    
             else:
-                for_pass = int(input('Forgot Password ? Choose 1 : '))        
+                for_pass = int(input('Forgot Password ? Choose 1 or Choose any number to login again: '))        
                 if for_pass == 1: 
                     break                    
                 else:
@@ -40,12 +88,7 @@ while True:
 
 
         
-        # print('Choose Operations')
-        # op = input('What you need to do ?: ')
-
-        # if op is None:
-        #     break
-        # else: continue
+     
                 
 
 
