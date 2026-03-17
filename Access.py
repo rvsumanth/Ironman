@@ -4,7 +4,7 @@ class suite_access_protection():
     #     pass
 
     def create_pass(self):
-        user_data = input('Create a Password: ')
+        user_data = input('\nCreate a Password: ')
         if user_data == '':
             print("Password Creation Denied! Try again")
             return False
@@ -15,7 +15,7 @@ class suite_access_protection():
                 
 
     def update_pass(self):
-        user_data = input("Enter a new password to update: ")
+        user_data = input("\nEnter a new password to update: ")
         if user_data not in self.interface_pass and user_data != '' :
             self.interface_pass.append(user_data)
             print('Updated Successfully')
@@ -25,8 +25,6 @@ class suite_access_protection():
             return False
         
 
-    # def get_pass(self):
-    #     return self.interface_pass 
 
 
 
@@ -38,7 +36,7 @@ class Authentication(suite_access_protection):
 
 
     def interface_access(self):
-        user_enter_pass = input("Enter Password to Access Interface: ")
+        user_enter_pass = input("\nEnter Password to Access Interface: ")
         if user_enter_pass in self.interface_pass :
             print('Access Granted')
             return True
