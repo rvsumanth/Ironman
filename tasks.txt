@@ -4,3 +4,6 @@ End of the day work status: created two full functional operations of Ironman su
 
 18-04-2026: Update Interface
 create launch missile operation and make it accessible in the interface
+End of the day work status: Created missile launch function and made accessible in the interface
+some modifications need to be done
+modifications for tomorrow: optimize the loops in missile launch function, Remove the unwanted spaces and optimize the "next line" features for better terminal view and space saving.
