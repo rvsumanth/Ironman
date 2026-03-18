@@ -31,30 +31,36 @@ while True:
             if login_int:
                 # Selecting Opearations
                 print("\nWelcome Sir select Operations ")
-                su_fly = 0
+                suite_is_flying = 0
                 while True:
-                    sel_op = int(input('\nOperations: \n1. Fly \n2. Land \n3. exit \nEnter here: '))
+                    sel_op = int(input('\nOperations: \n1. Fly \n2. Land \n3. Launch Missile\n4. exit \nEnter here: '))
+                    #fly
                     if sel_op == 1:
-                        if su_fly ==1:
+                        if suite_is_flying ==1:
                             print("\nSuite is already Flying")
                             continue
                         else:
                             fly  = suite_op.start_ign()
                             if fly: 
-                                su_fly = 1
+                                suite_is_flying = 1
                                 
-                        
+                     #Land   
                     elif sel_op == 2:
-                        if su_fly == 0:
+                        if suite_is_flying == 0:
                             print("\nSuite is already in Land")
                             continue
                         else:
                             lnd = suite_op.stop_ign()
                             if lnd:
-                                su_fly = 0
-
+                                suite_is_flying = 0
+                    
+                    #Launch Missile
+                    elif sel_op == 3:
+                        launch = suite_op.launch_missile()
+                    
+                    #exit
                     else:
-                        if su_fly == 1:
+                        if suite_is_flying == 1:
                             lnd_frc = 0
                             while lnd_frc == 0:
                                 log_force = land_forceful()
@@ -67,7 +73,7 @@ while True:
                             if lnd_frc == 1:
                                 break
 
-                        elif su_fly == 0:        
+                        elif suite_is_flying == 0:        
                             print("Logged out")
                             break
 
