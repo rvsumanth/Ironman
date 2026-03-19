@@ -1,4 +1,5 @@
 import time
+from config import *
 
 class ironman_op:
     def __init__(self):
@@ -83,7 +84,7 @@ class ironman_op:
             target_list = ['Building', 'Bunker', 'Tanker', 'Helicopter', 'Jet planes']
 
             while True:
-                option = int(input('\nSelect Missile Range\n 1. 100m\n 2. 500m\n 3. 1000m\nGeneral Options\n 4. Missiles Quantity\n 5. Terminate Launching\nEnter your Option: '))
+                option = int(input('\nSelect Missile Range\n 1. 100m | 2. 500m | 3. 1000m\nGeneral Options\n 4. Missiles Quantity | 5. Terminate Launching\nEnter your Option: '))
                 
                 if option == " " :
                     print('\nInvalid Range')
@@ -95,7 +96,7 @@ class ironman_op:
                     if range_100 != 0:
                         
                         #Selecting Target
-                        target = int(input('\nSelect Target\n1. Buildings\n2. Bunkers\n3. Tankers\n4. Helicopters\n5. Jet Planes\nEnter Your Option :  '))
+                        target = int(input('\Identified Targets\n1. Buildings | 2. Bunkers | 3. Tankers | 4. Helicopters | 5. Jet Planes\n Select Your Target :  '))
                         
                         if target in [1,2,3,4,5]:
                             print('\nTarget Locked')
@@ -108,11 +109,12 @@ class ironman_op:
 
                                 for i in range(1, missile_qty+1):
                                     print(f'\nLaunching {missiles[option-1]}mtr missile {i} on {target_list[target-1]}')
+                                    print('countdown: ') 
                                     for j in range(sec, 0, -1): 
-                                        print('countdown: ')       #timer
+                                        # print('countdown: ')       #timer
                                         print(j)
                                         time.sleep(1)
-                                    print(f"\n{i} Missile launched Successfully")
+                                    print(f"\nMissile {i} launched Successfully")
                                     range_100 -= 1              #decreasing missile quantity
                                     print(f'Remaining 100 meters range missiles: {range_100}')
                                 
@@ -141,7 +143,7 @@ class ironman_op:
                     if range_500 != 0:
                         
                         #Selecting Target
-                        target = int(input('\nSelect Target\n1. Buildings\n2. Bunkers\n3. Tankers\n4. Helicopters\n5. Jet Planes\nEnter Your Option :  '))
+                        target = int(input('\nSelect Target\n1. Buildings | 2. Bunkers | 3. Tankers | 4. Helicopters | 5. Jet Planes\nEnter Your Option :  '))
                         
                         if target in [1,2,3,4,5]:
                             print('\nTarget Locked')
@@ -154,11 +156,12 @@ class ironman_op:
 
                                 for i in range(1, missile_qty+1):
                                     print(f'\nLaunching {missiles[option-1]}mtr missile {i} on {target_list[target-1]}')
+                                    print('countdown: ') 
                                     for j in range(sec, 0, -1): 
-                                        print('countdown: ')       #timer
+                                              #timer
                                         print(j)
                                         time.sleep(1)
-                                    print(f"\n{i} Missile launched Successfully")
+                                    print(f"\nMissile {i} launched Successfully")
                                     range_500 -= 1              #decreasing missile quantity
                                     print(f'Remaining 500 meters range missiles: {range_500}')
                                 
@@ -185,7 +188,7 @@ class ironman_op:
                     if range_1000 != 0:
                         
                         #Selecting Target
-                        target = int(input('\nSelect Target\n1. Buildings\n2. Bunkers\n3. Tankers\n4. Helicopters\n5. Jet Planes\nEnter Your Option :  '))
+                        target = int(input('\nSelect Target\n1. Buildings | 2. Bunkers | 3. Tankers | 4. Helicopters | 5. Jet Planes\nEnter Your Option :  '))
                         
                         if target in [1,2,3,4,5]:
                             print('\nTarget Locked')
@@ -198,11 +201,12 @@ class ironman_op:
 
                                 for i in range(1, missile_qty+1):
                                     print(f'\nLaunching {missiles[option-1]}mtr missile {i} on {target_list[target-1]}')
+                                    print('countdown: ') 
                                     for j in range(sec ,0, -1):
-                                        print('countdown: ')        #timer changed
+                                               #timer changed
                                         print(j)
                                         time.sleep(1)
-                                    print(f"\n{i} Missile Launched Successfuly")
+                                    print(f"\nMissile {i} Launched Successfuly")
                                     range_1000 -= 1              #decreasing missile quantity
                                     print(f'Remaining 1000 meters range missiles: {range_1000}')
                                 
@@ -235,7 +239,14 @@ class ironman_op:
 
 
 
-
+    def get_altitude (self, start_time, suit_is_flying):
+        # if suit_is_flying ==1 and start_time is not None:
+        #      elapsed_time = time.time() - start_time
+        #      print(f"You are flying since {elapsed_time:.2f} seconds")
+        elapsed_time = flying_time(start_time, suit_is_flying)
+        conv_sec_to_hour = elapsed_time/60
+        altitute = conv_sec_to_hour * 300 # for 1 min speed is 300 mts range altitude
+        return altitute  
 
         
 
