@@ -1,9 +1,27 @@
-17-04-2026:  Update Interface
+17-04-2026:
 Create ironman operations and make it accessible in interface
 End of the day work status: created two full functional operations of Ironman suite and made them accessible in interface
 
-18-04-2026: Update Interface
+18-04-2026: 
+Today Task:
 create launch missile operation and make it accessible in the interface
-End of the day work status: Created missile launch function and made accessible in the interface
+
+End of the day work status: 
+Created missile launch function and made accessible in the interface
 some modifications need to be done
-modifications for tomorrow: optimize the loops in missile launch function, Remove the unwanted spaces and optimize the "next line" features for better terminal view and space saving.
+
+Optional modifications for tomorrow: 
+optimize the loops in missile launch function, Remove the unwanted spaces and optimize the "next line" features for better terminal view and space saving.
+
+19-04-2026: Updated Interface, operations
+Today Task: 
+Create suite flying altitude function and provide accessability in the interface
+
+End of the day work status:
+Created Altitude checking function and made them accessible in the interface
+Optimized spaces for better readability and ensured utilizing less console space
+Performed all edge testcases for flying_time and Check_altitude Functions
+
+Optional Modifications for Tomorrow:
+optimize the loops in missile launch function
+create function that identifies the nearby networks
