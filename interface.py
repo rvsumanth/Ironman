@@ -1,17 +1,19 @@
 from ironman_operations import *
 from Access import *
 from utils import *
+from config import *
 
 
 auth = Authentication()
 int_acc = suite_access_protection()
 suite_op = ironman_op()
-
-print('\nHello Welcome to VS Technology')
+print('\n================================')
+print('Hello Welcome to VS Technology')
+print('================================')
 while True:
     print()
     #section for creating password
-    first_acc = int(input("1. Create Password\n2. Update Password\nChoose any number to Login\nEnter Your Option:  "))
+    first_acc = int(input("1. Create Password | 2. Update Password\nChoose any number to Login\nEnter Your Option:  "))
     if first_acc == 1:
         cr_pass = int_acc.create_pass()
         if cr_pass != True:
@@ -30,24 +32,28 @@ while True:
             login_int = auth.interface_access()
             if login_int:
                 # Selecting Opearations
-                print("\nWelcome Sir select Operations ")
+                print('\n================================')
+                print("Welcome Sir select Operations ")
+                print('================================')
                 suite_is_flying = 0
+                start_time = None
                 while True:
-                    sel_op = int(input('\nOperations: \n1. Fly \n2. Land \n3. Launch Missile\n4. exit \nEnter here: '))
+                    sel_op = int(input('Operations: \n1. Fly | 2. Land | 3. Launch Missile | 4. Check Altitude | 5. exit \nEnter here: '))
                     #fly
                     if sel_op == 1:
                         if suite_is_flying ==1:
-                            print("\nSuite is already Flying")
+                            print("\nSuite is already Flying\n")
                             continue
                         else:
                             fly  = suite_op.start_ign()
                             if fly: 
                                 suite_is_flying = 1
+                                start_time = time.time()
                                 
                      #Land   
                     elif sel_op == 2:
                         if suite_is_flying == 0:
-                            print("\nSuite is already in Land")
+                            print("\nSuite is already in Land\n")
                             continue
                         else:
                             lnd = suite_op.stop_ign()
@@ -58,6 +64,16 @@ while True:
                     elif sel_op == 3:
                         launch = suite_op.launch_missile()
                     
+                    #check altitude
+                    elif sel_op == 4:
+                        if suite_is_flying == 1 :
+                            alti_check = suite_op.get_altitude(start_time, suite_is_flying)
+                            fly_time = flying_time(start_time, suite_is_flying)
+                            fli_min = fly_time/60
+                            print(f'\nSuite is flying since {fli_min:.1f} minutes')
+                            print(f'\nSuite Current altitude: {alti_check:.2f} meters\n ')
+                        else: print('\nSuite is on land impossible to fetch altitude\n')
+
                     #exit
                     else:
                         if suite_is_flying == 1:
@@ -73,8 +89,10 @@ while True:
                             if lnd_frc == 1:
                                 break
 
-                        elif suite_is_flying == 0:        
+                        elif suite_is_flying == 0:  
+                            print('================================')      
                             print("Logged out")
+                            print('================================')
                             break
 
                         else:
