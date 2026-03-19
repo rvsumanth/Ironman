@@ -38,23 +38,11 @@ class Authentication(suite_access_protection):
     def interface_access(self):
         user_enter_pass = input("\nEnter Password to Access Interface: ")
         if user_enter_pass in self.interface_pass :
-            print('Access Granted')
+            print('\nAccess Granted')
             return True
         else:
-            print("Wrong Password! Access Denied")
+            print("\nWrong Password! Access Denied")
             return False
-
-    # def interface_pass_creating(self):
-    #     x = self.create_pass()
-    #     if x : 
-    #         return "Password Created" , True
-    #     return "Password Creation Denied! Try again" , False
-
-    # def interface_login(self):
-    #     user_enter_pass = input("Hello Enter Password to Access Interface: ")
-    #     if self.interface_access(user_enter_pass):
-    #         return 'Access Granted', True
-    #     return 'Access Denied', False
 
 
 
